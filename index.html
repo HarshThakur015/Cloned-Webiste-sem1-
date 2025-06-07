@@ -185,6 +185,42 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Handle navigation bar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for content rows
+        document.querySelectorAll('.heading img').forEach(arrow => {
+            arrow.addEventListener('click', function() {
+                const container = this.closest('div').parentElement.querySelector('.images');
+                const scrollAmount = container.offsetWidth * 0.8;
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effect for movie/show tiles
+        document.querySelectorAll('.images img').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.zIndex = '2';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
 </body>
 
 </html>
